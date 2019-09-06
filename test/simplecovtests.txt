@@ -1,0 +1,10 @@
+1. What are SimpleCov and Guard?
+  a. SimpleCov - a tool to check what lines of code your tests cover (green).
+  b. Guard - Autorake - runs the tests affected by code changes, when you save
+2. How might you use them in the Hotel project?
+  a. SimpleCov - Identify places in your code you're not testing!
+    i. refactoring - can help you identify blocks of code that will never be executed and aren't needed
+  b. Guard - see if the change you just wrote caused a test to pass or fail
+3. Where do SimpleCov & Guard not help you in testing/
+  a. SimpleCov - doesn't tell you if you covered all scenarios/edge cases (test quality)
+  b. Guard - causes the SimpleCov report to only cover the most recent tests run (run rake manually to override this!)
