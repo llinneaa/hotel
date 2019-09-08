@@ -14,8 +14,8 @@ module Hotel
       return (@rate * nights)
     end
 
-    # def findAvailableRoom
-    # end
+    def findAvailableRoom
+    end
   end
 end
 

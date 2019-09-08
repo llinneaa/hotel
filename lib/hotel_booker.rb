@@ -6,7 +6,7 @@ module Hotel
     def initialize(rooms: [], reservations: [])
       # res an array or hash with ID as key?
       @rooms = (1..20).to_a
-      @reservations = reservations
+      @reservations = [] || reservations
     end
 
     def createReservation

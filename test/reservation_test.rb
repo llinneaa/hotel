@@ -4,7 +4,7 @@ require 'rake'
 describe "Reservation class" do
   describe "Reservation instantiation" do
     before do
-      @date_range = Hotel::DateRange.new(start_date: "2001/2/3", end_date: "2001/2/5")
+      @date_range = Hotel::DateRange.new("2001/2/3", "2001/2/5")
       @reservation = Hotel::Reservation.new(
         id: 1,
         room_number: 1,
@@ -14,7 +14,7 @@ describe "Reservation class" do
     end
 
     it "is an instance of Reservation" do
-      expect(@reservation).must_be_kind_of Hotel::Reservation
+      expect(@reservation).must_be_instance_of Hotel::Reservation
     end
 
     it "date_range is an instance of DateRange" do
