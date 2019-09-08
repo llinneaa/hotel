@@ -1,10 +1,10 @@
 module Hotel
   class Reservation
+    ROOM_RATE = 200
     attr_reader :id, :room_number, :date_range, :rate
-    #attr_accessor :cost
 
-    def initialize(id:, room_number:, date_range:, rate: nil)
-      @id = id
+    def initialize(id:, room_number:, date_range:, rate: 200)
+      @id = id.to_i
       @room_number = room_number
       @date_range = date_range
       @rate = rate
@@ -13,10 +13,12 @@ module Hotel
     def total_cost(nights)
       return (@rate * nights)
     end
+
+    # def findAvailableRoom
+    # end
   end
 end
 
-# reservation id = generated
 # room number
 # check_in_date
 # check_out_date
