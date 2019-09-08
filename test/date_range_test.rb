@@ -3,20 +3,29 @@ require 'rake'
 SimpleCov.start
 
 describe "DateRange class" do
+  before do
+    def create_new_range(start_date:, end_date:)
+      return Hotel::DateRange.new(start_date, end_date)
+    end
   describe "DateRange instantiation" do
     before do
-      @date_range = Hotel::DateRange.new(
-        start_date: "2001/2/3",
-        end_date: "2001/2/5"
-      )
+      @start_date = "2001/2/3"
+      @end_date = "2001/2/5"
+      #@date_range = create_new_range("2001/2/3", "2001/2/5")
+      # @date_range = Hotel::DateRange.new(
+      #   start_date: "2001/2/3",
+      #   end_date: "2001/2/5"
+      # )
+      @new_range = create_new_range(start_date: @start_date, end_date: @end_date)
     end
 
     it "is an instance of DateRange" do
-      expect(@date_range).must_be_kind_of Hotel::DateRange
+      expect(@new_range).must_be_instance_of Hotel::DateRange
     end
+  end
 
     it "throws an argument error if dates are invalid" do
-      expect { Hotel::DateRange.new(start_date: "2001/2/5", end_date: "2001/2/3") }.must_raise ArgumentError
+      expect{ Hotel::DateRange.new(start_date: "2001/2/5", end_date: "2001/2/3") }.must_raise ArgumentError
     end
   end
 
@@ -26,7 +35,7 @@ describe "DateRange class" do
         start_date: "2001/2/3",
         end_date: "2001/2/5"
       )
-      @new_range = @date_range.createDateArray(@date_range.start_date, @date_range.end_date)
+      #@new_range = create_new_range(@date_range.start_date, @date_range.end_date)
     end
 
     it "creates an array of all dates" do
