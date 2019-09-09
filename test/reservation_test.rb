@@ -6,7 +6,6 @@ describe "Reservation class" do
     before do
       @date_range = Hotel::DateRange.new("2001/2/3", "2001/2/5")
       @reservation = Hotel::Reservation.new(
-        id: 1,
         room_number: 1,
         date_range: @date_range
       )
@@ -21,13 +20,14 @@ describe "Reservation class" do
       expect(@reservation.date_range).must_be_instance_of Hotel::DateRange
     end
 
-    it "finds number of nights and total cost of reservation" do
+    it "finds duration of stay and total cost of reservation" do
       nights = @reservation.date_range.duration
       total_cost = @reservation.total_cost(nights)
       expect(total_cost).must_equal 400
     end
 
-    it "asdfasf" do
-    end
+    # it "makes a reservation" do
+
+    # end
   end
 end

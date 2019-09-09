@@ -1,13 +1,13 @@
+require 'date'
+
 module Hotel
   class Reservation
     ROOM_RATE = 200
-    attr_reader :id, :room_number, :date_range
+    attr_reader :room_number, :date_range
 
-    def initialize(id:, room_number:, date_range:)
-      @id = id.to_i
+    def initialize(room_number:, date_range:)
       @room_number = room_number
       @date_range = date_range
-      #@rate = rate
     end
 
     def total_cost(nights)

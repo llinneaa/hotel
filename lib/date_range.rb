@@ -14,20 +14,14 @@ module Hotel
     end
 
     #do not want to include end date because another reservation CAN include that same date (as the start date)
-    def createDateArray#(input_start_date, input_end_date)
-      date_array = (@start_date...@end_date).to_a
-      return date_array
+    def createDateArray
+      @date_array = (@start_date...@end_date).to_a
+      return @date_array
     end
 
     def duration
       duration = (@end_date - @start_date).to_i
       return duration
-    end
-
-    def includesDate?(date)
-      if createDateArray.include?(date)
-        return reservation_id
-      end
     end
 
     def overlap?(start_date, end_date)

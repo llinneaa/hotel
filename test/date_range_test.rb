@@ -1,6 +1,5 @@
 require_relative 'test_helper'
 require 'rake'
-SimpleCov.start
 
 describe "DateRange class" do
   #similar to before statement in trip_dispatcher 'build_test_dispatcher'
