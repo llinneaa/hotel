@@ -18,9 +18,10 @@ describe "HotelBooker class" do
       expect(@hotel_booker.rooms.count).must_equal 20
     end
   
-  describe "HotelBooker instantiation" do
+  #added @reservations.room_number parameter to try to debug the Hash error when raising an ArgumentError when all rooms are taken for a range range; might delete
+  describe "HotelBooker methods" do
     before do
-      @hotel_reservation = @hotel_booker.createReservation(1, @date_range)
+      @hotel_reservation = @hotel_booker.createReservation(@reservations.room_number, @date_range)
     end
 
     it "stores new reservations in the reservations array" do
@@ -35,6 +36,25 @@ describe "HotelBooker class" do
       expect(list_of_reservations).must_be_kind_of Array
       expect(list_of_reservations[0]).must_be_instance_of Hotel::Reservation
     end
+
+    it "can view a list of rooms that are not reserved for a given date range" do
+      dates = Hotel::DateRange.new("2001/2/3", "2001/2/5")
+
+      reservation = Hotel::Reservation.new(room_number: 1, date_range: dates)
+
+      expect(@hotel_booker.rooms_available?(dates)).must_equal (2..20).to_a
+    end
+
+    
+    it "raises an exception if program tries to reserve a room during a date range when all rooms are reserved" do
+      #room_number = 1
+      20.times do
+        @hotel_booker.createReservation(@reservations.room_number, @date_range)
+        #room_number += 1
+      end  
+      expect(@hotel_booker.createReservation(@reservations.room_number, @date_range)).must_raise ArgumentError
+    end
   end
+    
   end
 end

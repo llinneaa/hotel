@@ -25,9 +25,5 @@ describe "Reservation class" do
       total_cost = @reservation.total_cost(nights)
       expect(total_cost).must_equal 400
     end
-
-    # it "makes a reservation" do
-
-    # end
   end
 end

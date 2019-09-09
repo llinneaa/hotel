@@ -13,8 +13,5 @@ module Hotel
     def total_cost(nights)
       return (ROOM_RATE * nights)
     end
-
-    def findAvailableRoom
-    end
   end
 end
