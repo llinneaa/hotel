@@ -15,12 +15,13 @@ module Hotel
 
     #do not want to include end date because another reservation CAN include that same date (as the start date)
     def createDateArray#(input_start_date, input_end_date)
-      #return (input_start_date...input_end_date).to_a
-      return (@start_date...@end_date).to_a
+      date_array = (@start_date...@end_date).to_a
+      return date_array
     end
 
     def duration
-      return (@end_date - @start_date).to_i
+      duration = (@end_date - @start_date).to_i
+      return duration
     end
 
     def includesDate?(date)

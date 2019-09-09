@@ -5,12 +5,14 @@ module Hotel
 
     def initialize(rooms: [], reservations: [])
       # res an array or hash with ID as key?
+      # can I make an entire instance (of reservation) into a hash and store it in the reservations array?
       @rooms = (1..20).to_a
       @reservations = [] || reservations
     end
 
     def createReservation
-      new_reservation = Reservation.new(id, room_number, date_range, rate)
+      new_reservation = Reservation.new(id, room_number, date_range)
+      puts new_reservation
       return @reservations << new_reservation
     end
 

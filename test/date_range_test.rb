@@ -6,7 +6,7 @@ describe "DateRange class" do
   #similar to before statement in trip_dispatcher 'build_test_dispatcher'
   #ranges will be instances of DateRange
   before do
-    def create_new_range(start_date, end_date)
+    def new_range(start_date, end_date)
       return Hotel::DateRange.new(start_date, end_date)
     end
   end
@@ -15,7 +15,7 @@ describe "DateRange class" do
     before do
       @start_date = "2001/2/3"
       @end_date = "2001/2/5"
-      @new_range = create_new_range(@start_date, @end_date)
+      @new_range = new_range(@start_date, @end_date)
     end
 
     it "is an instance of DateRange" do
@@ -23,18 +23,12 @@ describe "DateRange class" do
     end
 
     it "raises an argument error if dates are invalid" do
-      #bad_input = create_new_range(start_date: "2001/2/5", end_date: "2001/2/3")
-      expect{create_new_range("2001/2/5", "2001/2/3")}.must_raise ArgumentError
-      #expect{ Hotel::DateRange.new(start_date: "2001/2/5", end_date: "2001/2/3") }.must_raise ArgumentError
+      expect{new_range("2001/2/5", "2001/2/3")}.must_raise ArgumentError
     end
 
-    it "creates an array of all dates" do
+    it "creates an array of all dates, excluding reservation end date" do
       test_range = @new_range.createDateArray
       expect(test_range).must_be_kind_of Array
-    end
-
-    it "makes sure end date is not included in array" do
-      test_range = @new_range.createDateArray
       expect(test_range).wont_include @new_range.end_date
     end
 

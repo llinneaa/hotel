@@ -8,8 +8,7 @@ describe "Reservation class" do
       @reservation = Hotel::Reservation.new(
         id: 1,
         room_number: 1,
-        date_range: @date_range,
-        rate: 200
+        date_range: @date_range
       )
     end
 
@@ -19,7 +18,7 @@ describe "Reservation class" do
 
     it "date_range is an instance of DateRange" do
       puts @reservation.date_range
-      expect(@reservation.date_range).must_be_kind_of Hotel::DateRange
+      expect(@reservation.date_range).must_be_instance_of Hotel::DateRange
     end
 
     it "finds number of nights and total cost of reservation" do
