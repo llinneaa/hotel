@@ -10,10 +10,11 @@ module Hotel
       @reservations = [] || reservations
     end
 
-    #Error says cannot call createDateArray method on a Hash, but I don't create a hash anywhere in code - look into this
     #selects first available room for reservation, shovels into reservations array
+    #if there were no available rooms, the array would be empty! therefore, if the length of the array is 0, the program raises an ArgumentError.
+    #instructor helped me fix this code and the test in our 1:1 (had been returning a Hash)
     def createReservation(room_number, date_range)
-      available_rooms_list = rooms_available?(date_range: date_range)
+      available_rooms_list = rooms_available?(date_range)
       if available_rooms_list.length == 0
         raise ArgumentError.new("no available rooms for those dates!")
       end
@@ -22,6 +23,7 @@ module Hotel
       return @reservations << new_reservation
     end
 
+    #checks the date_range
     def reservationsByDate(date)
       @reservations.each do |reservation_object|
         if reservation_object.date_range.createDateArray.include?(date)
@@ -30,7 +32,7 @@ module Hotel
       end
     end
 
-    #first tried shoveling all items except those with overlapping date ranges into an empty array but program was returning nil values; .delete method worked
+    #first tried shoveling all room numbers EXCEPT those with overlapping date ranges into an empty array available_rooms, but program was returning nil values; .delete method worked (provide full array of rooms using @rooms instance variable, then delete as they appear to return an array with available dates)
     def rooms_available?(date_range)
       available_rooms = @rooms
       @reservations.each do |reservation_object|

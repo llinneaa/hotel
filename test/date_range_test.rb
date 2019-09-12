@@ -31,6 +31,7 @@ describe "DateRange class" do
       expect(test_range).wont_include @new_range.end_date
     end
 
+    #test includes one array with dates that overlap with the range_array and one array with dates that do not. The test for the overlapping dates returns true and the test for the non-overlapping dates returns false.
     it "makes sure dates don't overlap" do
       range_array = new_range("2001/2/3", "2001/2/5")
       test_array_with_overlap = new_range("2001/2/4", "2001/2/6")

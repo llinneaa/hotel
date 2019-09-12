@@ -24,6 +24,9 @@ module Hotel
       return duration
     end
 
+    #friend/'mentor' helped with refactoring overlap code
+    #she explained the single '&' is 'bitwise' code and is used more often in lower-level languages. It is comparing the object's date range array with the inputted object's date range array and pushes those similarities into an array. If they have no similarities (e.g. the array is empty), it returns false (indicating there is no overlap). If the array contains any dates, it returns true (indicating overlap) because the array will be filled with overlapping dates.
+    #typically 'other' is used, but for my understanding I used the parameter 'input'
     def overlap?(input)
       if self.createDateArray & input.createDateArray != []
         return true
